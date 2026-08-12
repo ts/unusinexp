@@ -14,9 +14,16 @@ function setSignal(unstable) {
   });
 }
 
-window.setInterval(() => {
-  setSignal(Math.random() > 0.78);
-}, 1700);
+function scrambleSignal() {
+  const unstable = Math.random() > 0.56;
+  setSignal(unstable);
+  const duration = unstable
+    ? 180 + Math.random() * 720
+    : 380 + Math.random() * 1500;
+  window.setTimeout(scrambleSignal, duration);
+}
+
+scrambleSignal();
 
 issuedLinks.forEach((link) => link.addEventListener("click", (event) => {
   if (link.classList.contains("is-disabled")) event.preventDefault();
