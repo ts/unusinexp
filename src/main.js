@@ -6,7 +6,9 @@ const issuedLinks = document.querySelectorAll(".issued-links a");
 const root = document.documentElement;
 
 function randomHue() {
-  return `${Math.floor(Math.random() * 360)}deg`;
+  const hotHues = [76, 206, 278, 324];
+  const base = hotHues[Math.floor(Math.random() * hotHues.length)];
+  return `${base + Math.floor(Math.random() * 31) - 15}deg`;
 }
 
 function scramblePalette() {
