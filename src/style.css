@@ -1,4 +1,4 @@
-:root { --ink: #e8e6de; --void: #080808; --acid: #d6ff36; --glitch-one: 40deg; --glitch-two: 330deg; --glitch-three: 180deg; }
+:root { --ink: #e8e6de; --void: #080808; --acid: #d6ff36; --hot-pink: #ff4fd8; --signal-color: var(--acid); --glitch-one: 40deg; --glitch-two: 330deg; --glitch-three: 180deg; }
 * { box-sizing: border-box; }
 html, body { margin: 0; min-height: 100%; background: var(--void); }
 body { color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
@@ -10,10 +10,10 @@ body { color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
 .topline { top: 35px; right: 43px; left: 43px; }
 .topline p, .receipt p { margin: 0; }
 .status { display: flex; gap: 8px; align-items: center; }
-.status b { width: 6px; height: 6px; border-radius: 50%; display: block; background: var(--acid); box-shadow: 0 0 10px var(--acid); }
-.status b.off { background: #ff4d3d; box-shadow: 0 0 10px #ff4d3d; }
+.status b { width: 6px; height: 6px; border-radius: 50%; display: block; background: var(--signal-color); box-shadow: 0 0 10px var(--signal-color); }
+.status b.off { background: var(--hot-pink); box-shadow: 0 0 10px var(--hot-pink); }
 .receipt { top: 43px; right: 35px; width: calc(100svh - 86px); transform: rotate(-90deg); transform-origin: top right; }
-.issued-links a { display: inline-block; color: var(--acid); text-decoration: none; text-shadow: 0 0 7px rgba(214,255,54,.25); animation: link-jitter 2.35s steps(1, end) infinite; }
+.issued-links a { display: inline-block; color: var(--link-color, var(--acid)); text-decoration: none; text-shadow: 0 0 7px var(--link-glow, rgba(214,255,54,.25)); animation: link-jitter 2.35s steps(1, end) infinite; }
 .issued-links a:nth-of-type(2) { animation-delay: -.72s; }
 .issued-links a:nth-of-type(3) { animation-delay: -1.46s; }
 .issued-links a:hover, .issued-links a:focus-visible { text-decoration: underline; outline: none; }
@@ -36,7 +36,7 @@ body { color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
 @keyframes ghostA { 0%, 17%, 100% { transform: translate(0); opacity: 0; } 18%, 22% { transform: translate(-18px,4px); opacity: .42; clip-path: inset(0 0 56% 0); } 23% { transform: translate(9px,-2px); opacity: .18; clip-path: inset(59% 0 0 0); } }
 @keyframes ghostB { 0%, 56%, 100% { transform: translate(0); opacity: 0; } 57%, 60% { transform: translate(19px,-3px); opacity: .34; clip-path: inset(39% 0 20% 0); } 61% { transform: translate(-5px,1px); opacity: .22; clip-path: inset(4% 0 77% 0); } }
 @keyframes ghostC { 0%, 80%, 100% { transform: translate(0); opacity: 0; } 81%, 85% { transform: translate(6px,0); opacity: .32; clip-path: inset(70% 0 1% 0); } 86% { transform: translate(-12px,3px); opacity: .17; clip-path: inset(21% 0 57% 0); } }
-@keyframes link-jitter { 0%, 13%, 19%, 44%, 49%, 77%, 82%, 100% { color: var(--acid); transform: translate(0); text-shadow: 0 0 7px rgba(214,255,54,.25); } 14% { color: var(--ink); transform: translate(-2px,0); text-shadow: 3px 0 0 rgba(214,255,54,.7); } 15% { color: var(--acid); transform: translate(3px,0); text-shadow: -2px 0 0 rgba(232,230,222,.5); } 45% { color: rgba(232,230,222,.84); transform: translate(1px,-1px); text-shadow: -3px 0 0 rgba(214,255,54,.6); } 78% { color: var(--ink); transform: translate(-1px,0); text-shadow: 2px 0 0 rgba(214,255,54,.7); } }
+@keyframes link-jitter { 0%, 13%, 19%, 44%, 49%, 77%, 82%, 100% { color: var(--link-color, var(--acid)); transform: translate(0); text-shadow: 0 0 7px var(--link-glow, rgba(214,255,54,.25)); } 14% { color: var(--ink); transform: translate(-2px,0); text-shadow: 3px 0 0 var(--link-color, var(--acid)); } 15% { color: var(--link-color, var(--acid)); transform: translate(3px,0); text-shadow: -2px 0 0 rgba(232,230,222,.5); } 45% { color: rgba(232,230,222,.84); transform: translate(1px,-1px); text-shadow: -3px 0 0 var(--link-color, var(--acid)); } 78% { color: var(--ink); transform: translate(-1px,0); text-shadow: 2px 0 0 var(--link-color, var(--acid)); } }
 @keyframes wake { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: scale(1); } }
 @media (max-width: 700px) { .terminal::before { inset: 10px; } .topline { right: 24px; left: 24px; top: 25px; font-size: 8px; } .receipt { top: 24px; right: 25px; width: calc(100svh - 48px); font-size: 7px; } .receipt p:nth-child(2), .receipt p:nth-child(3) { display: none; } .mark-zone { width: 74vw; } .side-label { left: 17px; font-size: 7px; gap: 7px; } .side-label i { height: 28px; } }
 @media (prefers-reduced-motion: reduce) { .mark-zone, .mark { animation: none !important; } }
