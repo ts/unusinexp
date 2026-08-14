@@ -1,4 +1,4 @@
-:root { --ink: #e8e6de; --void: #080808; --acid: #d6ff36; }
+:root { --ink: #e8e6de; --void: #080808; --acid: #d6ff36; --glitch-one: 40deg; --glitch-two: 330deg; --glitch-three: 180deg; }
 * { box-sizing: border-box; }
 html, body { margin: 0; min-height: 100%; background: var(--void); }
 body { color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
@@ -26,13 +26,13 @@ body { color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
 .mark { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: invert(1); }
 .main-mark { animation: jitter 2.35s steps(1, end) infinite; }
 .ghost { opacity: .22; mix-blend-mode: screen; }
-.ghost-one { filter: invert(70%) sepia(90%) saturate(500%) hue-rotate(40deg); animation: ghostA 1.7s steps(1,end) infinite; }
-.ghost-two { filter: invert(31%) sepia(95%) saturate(3500%) hue-rotate(330deg); animation: ghostB 2.15s steps(1,end) infinite; }
-.ghost-three { filter: invert(50%) sepia(88%) saturate(2800%) hue-rotate(180deg); animation: ghostC 3.1s steps(1,end) infinite; }
+.ghost-one { filter: invert(70%) sepia(90%) saturate(500%) hue-rotate(var(--glitch-one)); animation: ghostA 1.7s steps(1,end) infinite; }
+.ghost-two { filter: invert(31%) sepia(95%) saturate(3500%) hue-rotate(var(--glitch-two)); animation: ghostB 2.15s steps(1,end) infinite; }
+.ghost-three { filter: invert(50%) sepia(88%) saturate(2800%) hue-rotate(var(--glitch-three)); animation: ghostC 3.1s steps(1,end) infinite; }
 .corner { width: 16px; height: 16px; position: absolute; z-index: 4; border-color: var(--acid); border-style: solid; }
 .corner-tl { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
 .corner-br { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
-@keyframes jitter { 0%, 7%, 12%, 36%, 40%, 67%, 71%, 100% { transform: translate(0) skewX(0); clip-path: inset(0); filter: invert(1); } 8% { transform: translate(-11px,2px) skewX(-2deg); clip-path: inset(10% 0 67% 0); } 9% { transform: translate(14px,-3px); clip-path: inset(72% 0 8% 0); } 10% { transform: translate(-4px,0); clip-path: inset(32% 0 35% 0); } 37% { transform: translate(9px,2px) skewX(1deg); clip-path: inset(0 0 62% 0); } 38% { transform: translate(-15px,-1px); clip-path: inset(48% 0 19% 0); } 68% { transform: translate(8px,0); clip-path: inset(74% 0 3% 0); } 69% { transform: translate(-6px,1px) skewX(-1deg); clip-path: inset(18% 0 53% 0); } }
+@keyframes jitter { 0%, 7%, 12%, 36%, 40%, 67%, 71%, 100% { transform: translate(0) scale(1) skewX(0); clip-path: inset(0); filter: invert(1); } 8% { transform: translate(-11px,2px) scale(1.015) skewX(-2deg); clip-path: inset(10% 0 67% 0); } 9% { transform: translate(14px,-3px) scale(.99); clip-path: inset(72% 0 8% 0); } 10% { transform: translate(-4px,0) scale(1.025); clip-path: inset(32% 0 35% 0); } 37% { transform: translate(9px,2px) scale(1.09) skewX(1deg); clip-path: inset(0 0 62% 0); } 38% { transform: translate(-15px,-1px) scale(1.04); clip-path: inset(48% 0 19% 0); } 68% { transform: translate(8px,0) scale(.985); clip-path: inset(74% 0 3% 0); } 69% { transform: translate(-6px,1px) scale(1.035) skewX(-1deg); clip-path: inset(18% 0 53% 0); } }
 @keyframes ghostA { 0%, 17%, 100% { transform: translate(0); opacity: 0; } 18%, 22% { transform: translate(-18px,4px); opacity: .42; clip-path: inset(0 0 56% 0); } 23% { transform: translate(9px,-2px); opacity: .18; clip-path: inset(59% 0 0 0); } }
 @keyframes ghostB { 0%, 56%, 100% { transform: translate(0); opacity: 0; } 57%, 60% { transform: translate(19px,-3px); opacity: .34; clip-path: inset(39% 0 20% 0); } 61% { transform: translate(-5px,1px); opacity: .22; clip-path: inset(4% 0 77% 0); } }
 @keyframes ghostC { 0%, 80%, 100% { transform: translate(0); opacity: 0; } 81%, 85% { transform: translate(6px,0); opacity: .32; clip-path: inset(70% 0 1% 0); } 86% { transform: translate(-12px,3px); opacity: .17; clip-path: inset(21% 0 57% 0); } }

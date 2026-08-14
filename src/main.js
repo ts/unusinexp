@@ -3,6 +3,18 @@ import "./style.css";
 const signal = document.querySelector("#signal");
 const signalDot = document.querySelector("#signal-dot");
 const issuedLinks = document.querySelectorAll(".issued-links a");
+const root = document.documentElement;
+
+function randomHue() {
+  return `${Math.floor(Math.random() * 360)}deg`;
+}
+
+function scramblePalette() {
+  root.style.setProperty("--glitch-one", randomHue());
+  root.style.setProperty("--glitch-two", randomHue());
+  root.style.setProperty("--glitch-three", randomHue());
+  window.setTimeout(scramblePalette, 700 + Math.random() * 2400);
+}
 
 function setSignal(unstable) {
   signal.textContent = unstable ? "UNSTABLE" : "STABLE";
@@ -24,6 +36,7 @@ function scrambleSignal() {
 }
 
 scrambleSignal();
+scramblePalette();
 
 issuedLinks.forEach((link) => link.addEventListener("click", (event) => {
   if (link.classList.contains("is-disabled")) event.preventDefault();
