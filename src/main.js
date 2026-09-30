@@ -29,7 +29,7 @@ function scramblePalette() {
   root.style.setProperty("--glitch-three", channels[2].hue);
   root.style.setProperty("--signal-color", channels[0].color);
   issuedLinks.forEach((link, index) => {
-    const channel = channels[index];
+    const channel = channels[index % channels.length];
     link.style.setProperty("--link-color", channel.color);
     link.style.setProperty("--link-glow", channel.glow);
   });
